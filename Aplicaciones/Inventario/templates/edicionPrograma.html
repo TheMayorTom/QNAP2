@@ -1,0 +1,55 @@
+{%extends "./base.html" %}
+
+{% block title %} Edicion del Programa {% endblock %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-md-4 offset-4">
+        <h2>Edicion de Programas</h2>
+    <div class="card">
+      <div class="card-body">
+        <form action="edicionPrograma/" method="POST"> {% csrf_token %}
+          <div class="form-group">
+            <input type="text" id="txtGrado" name="txtGrado" value="{{inventario.Grado}}" class="from-control" placeholder="Grado" 
+                minlength="5" maxlength="20" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtMateria" name="txtMateria" value="{{inventario.Materia}}" class="from-control" placeholder="Materia" 
+                minlength="5" maxlength="70" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtNombre" name="txtNombre" value="{{inventario.Nombre}}" class="from-control" placeholder="Nombre" 
+                minlength="5" maxlength="70" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtNom_archivo_ubi" name="txtNom_archivo_ubi" value="{{inventario.Nom_archivo_ubi}}" class="from-control" placeholder="Nombre del Archivo" 
+                minlength="5" maxlength="70" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtSerie" name="txtSerie" value="{{inventario.Serie}}" class="from-control" placeholder="Serie" 
+                minlength="5" maxlength="70" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtPeso" name="txtPeso" value="{{inventario.Peso}}" class="from-control" placeholder="Peso" 
+                minlength="5" maxlength="10" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtUbicacion" name="txtUbicacion" value="{{inventario.Ubicacion}}" class="from-control" placeholder="Ubicacion" 
+                minlength="4" maxlength="20" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="txtRuta" name="txtRuta" value="{{inventario.Ruta}}" class="from-control" placeholder="Ruta" 
+                minlength="10" maxlength="70" required>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-success byn-block text-white">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    </div>
+</div>
+
+
+{% endblock %}

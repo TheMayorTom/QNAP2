@@ -1,0 +1,79 @@
+{%extends "./base.html" %}
+
+{% block title %} Inventario de la Programacion {% endblock %}
+
+{% block body %}
+<dir class="row">
+  <div class="col-sm-16 col-md-8 col-lg-4 col-xl-4">
+    <h2>Gestion de Programas</h2>
+    <div class="card">
+      <div class="card-body">
+        <form action="/registrarPrograma/" method="POST"> {% csrf_token %}
+          <div class="form-grup">
+            <input type="text" id="txtGrado" name="txtGrado" class="from-control" placeholder="Grado" 
+                minlength="5" maxlength="20" required>
+          </div>
+          <div class="form-grup">
+            <input type="text" id="txtMateria" name="txtMateria" class="from-control" placeholder="Materia" 
+                minlength="5" maxlength="70" required>
+          </div>
+          <div class="form-grup">
+            <input type="text" id="txtNombre" name="txtNombre" class="from-control" placeholder="Nombre" 
+                minlength="5" maxlength="70" required>
+          </div>
+          <div class="form-grup">
+            <input type="text" id="txtNom_archivo_ubi" name="txtNom_archivo_ubi" class="from-control" placeholder="Nombre del Archivo" 
+                minlength="5" maxlength="70" required>
+          </div>
+          <div class="form-grup">
+            <input type="text" id="txtSerie" name="txtSerie" class="from-control" placeholder="Serie" 
+                minlength="5" maxlength="70" required>
+          </div>
+          <div class="form-grup">
+            <input type="text" id="txtPeso" name="txtPeso" class="from-control" placeholder="Peso" 
+                minlength="5" maxlength="10" required>
+          </div>
+          <div class="form-grup">
+            <input type="text" id="txtUbicacion" name="txtUbicacion" class="from-control" placeholder="Ubicacion" 
+                minlength="4" maxlength="20" required>
+          </div>
+          <div class="form-grup">
+            <input type="text" id="txtRuta" name="txtRuta" class="from-control" placeholder="Ruta" 
+                minlength="10" maxlength="70" required>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-success byn-block text-white">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+    <h1>Listado de Programas</h1>
+    <div class="table-responsive py-2">
+      <table class="table table-strinped">
+        <thead>
+          <tr>
+            <th> Id </th>
+            <th> Materia </th>
+            <th> Nombre </th>
+            <th colspan="2">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for inventario in inventarios %}
+            <tr>
+              <td>{{inventario.Id}}</td>
+              <td>{{inventario.Materia}}</td>
+              <td>{{inventario.Nombre}}</td>
+              <td><a href="edicionPrograma/{{inventario.Nombre}}" class="btn btn-info">Editar</a></td>
+              <td><a href="eliminarPrograma/{{inventario.Nombre}}" class="btn btn-danger">Eliminar</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</dir>
+{% endblock %}
+
