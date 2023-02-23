@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'u6ir-y(!je-@!c*^@s8wy2n$pei3(v!*lt5(jr3nql-o*=*w9('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middlewware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'QNAP2.urls'
@@ -119,3 +120,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT =  os.path.join(BASW_DIR, 'staticfiles')
+STATIC_TMP = os.path.join(BASE_DIR, 'static')
+
+os.makedirs(STATIC_TMP, exist_ok=true)
+os.makedirs(STATIC_ROOT, exist_ok=true)
+
+STATIFILES_DIRS ={
+    os.path(BASE_DIR, 'static'),
+}
+
+STATIFILES_STORAGE = 'whitenoise.storage.CompressdManifestStaticlesStorage'
+
