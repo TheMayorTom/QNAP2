@@ -11,4 +11,4 @@ urlpatterns = [
     path('editarPrograma/<Nombre>', views.editarPrograma),
     path('edicionPrograma/',views.edicionPrograma),
     path('eliminarPrograma/<Nombre>', views.eliminarPrograma),
-] + static(sttings.STATIC_URL, document_root=settigs.STATIC_ROOT)
+] 
